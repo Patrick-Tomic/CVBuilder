@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Start from './start'
+import Main from './main'
 import './style.scss'
-
+import {BrowserRouter} from 'react-router-dom'
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 ReactDOM.createRoot(document.querySelector('body')!).render(
   <React.StrictMode>
-    <Start />
+   <BrowserRouter>
+   <Main />
+   </BrowserRouter>
   </React.StrictMode>
 )
