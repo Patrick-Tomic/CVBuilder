@@ -1,9 +1,9 @@
 
 export default function Contact(){
     return (
-        <main>
+        <main className="flex bg-jetBlack">
              
-            <p>hello world</p>
+         
          
         </main>
     )
