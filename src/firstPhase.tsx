@@ -3,18 +3,30 @@
 export default function Contact({onChange,name, email,number, address}:any){
  
     return (
-        <div className="bg-white flex mt-5  flex-col items-center w-[55%] h-5/5 rounded-xl p-5">
-            <h1>Personal Information</h1>
-            <form className="flex p-5 flex-col" >
-            <label htmlFor="name">Full Name:</label>
-                <input className='text-black border-solid border-black border-2' type="text" value={name} name="name" data-key='name' onChange={onChange}/>
+        <div className="w-[75%] h-[80%] flex flex-col  ">
+        <h1 className="self-center font-signika text-4xl">Personal Information</h1>
+        <div className="bg-steel flex mt-5 text-white flex-col items-center h-[100%]  rounded-xl p-2">
+            <form className="flex h-[90%] justify-around flex-col" >
+                <div className="flex flex-col">
+                <label htmlFor="name">Full Name:</label>
+                <input className='text-black border-solid border-black border-2' type="text" value={name} name="name" data-key='name' required onChange={onChange}/>
+                </div>
+                <div className="flex flex-col"> 
                 <label htmlFor="">Email:</label>
-                <input className='text-black border-solid border-black border-2' data-key = 'email' onChange={onChange} value={email} type="email" />
+                <input className='text-black border-solid border-black border-2' data-key = 'email' onChange={onChange} required value={email} type="email" />
+                
+                </div>
+                <div className="flex flex-col">
                 <label htmlFor="">Phone Number:</label>
-                <input className='text-black border-solid border-black border-2' value={number} onChange={onChange} data-key='number' type="tel" />
+                <input className='text-black border-solid border-black border-2' value={number} onChange={onChange} required data-key='number' type="tel" />
+                </div>
+                <div className="flex flex-col"> 
                 <label htmlFor="">Address:</label>
-                <input className='text-black border-solid border-black border-2' onChange={onChange} data-key='address' value={address} type="text"/>
+                <input className='text-black border-solid border-black border-2' onChange={onChange} data-key='address' required value={address} type="text"/>
+                </div>
+                <button type='submit' className="border-solid border-2 hover:bg-hover text-black bg-white border-black w-2/5 self-center mt-5" >Next</button>
             </form>
+        </div>
         </div>
     )
     }

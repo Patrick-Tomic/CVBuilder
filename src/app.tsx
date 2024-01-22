@@ -16,7 +16,7 @@ export default function App(){
 
  return(
     <main className="flex h-[95%] w-[95%] bg-white text-black">
-         <div className="flex  flex-col items-center bg-jetBlack text-xl w-[50%] h-5/5"> 
+         <div className="flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5"> 
         <Contact onChange={handleContactInfoChange}
         name={value.name}
         email={value.email}
