@@ -1,6 +1,6 @@
 import {Route, Routes} from 'react-router-dom'
 import Start from './start'
-import Contact from './firstPhase'
+ 
 import App from './app'
 export default function Main(){
     return(

@@ -1,15 +1,14 @@
-export default function Resume(personal){
+import Header from './header'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export default function Resume({personal}:any){
 return (
-    <>
-    <header className="flex">
-        <div className="text-black">
-            <p>{personal.email}</p>
-            <p>{personal.number}</p>
-            <p>{personal.address}</p>
-        </div>
-        <h1>{personal.name}</h1>
-    </header>
-
-    </>
+    <div className='w-[50%]'>
+    <Header 
+    name = {personal.name} 
+    email ={personal.email} 
+    phone= {personal.number} 
+    address ={personal.address} 
+    />
+    </div>
 )
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Contact from "./firstPhase"
 import { useState } from "react"
 import Resume from "./resume"
@@ -14,13 +15,14 @@ export default function App(){
     }
 
  return(
-    <main className="flex w-4/5 bg-white text-black">
+    <main className="flex h-[95%] w-[95%] bg-white text-black">
+         <div className="flex  flex-col items-center bg-jetBlack text-xl w-[50%] h-5/5"> 
         <Contact onChange={handleContactInfoChange}
         name={value.name}
         email={value.email}
         number={value.number}
         address={value.address} />
-
+        </div>
         <Resume personal={value} />
     </main>
  )

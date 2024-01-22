@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
 $primary:#FAF9F6;
 *{
     margin: 0;
@@ -19,4 +20,7 @@ body{
 }
 main{
     background-color: $primary;
+}
+#headerHeading{
+    font-family: 'Libre Baskerville', system-ui;
 }
