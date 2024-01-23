@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { truncate } from "fs";
+
  
-export default function Contact({onChange,name, email,number, address}:any){
+//* eslint-disable @typescript-eslint/no-explicit-any */
+ 
+export default function Contact({next, onChange,name, email,number, address}:any){
  
     return (
         <div className="w-[75%] h-[80%] flex flex-col  ">
@@ -24,8 +29,9 @@ export default function Contact({onChange,name, email,number, address}:any){
                 <label htmlFor="">Address:</label>
                 <input className='text-black border-solid border-black border-2' onChange={onChange} data-key='address' required value={address} type="text"/>
                 </div>
-                <button type='submit' className="border-solid border-2 hover:bg-hover text-black bg-white border-black w-2/5 self-center mt-5" >Next</button>
+                
             </form>
+            <button type='submit' className="border-solid border-2 hover:bg-hover text-black bg-white border-black w-2/5 self-center mt-5"  onClick={next(true)}>Next</button>
         </div>
         </div>
     )
