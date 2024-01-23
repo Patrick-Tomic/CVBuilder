@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export default function EducationForm(onChange:any,degree:any,field:any,school:any, city:any, country:any, start:any,end:any){
+//* eslint-disable @typescript-eslint/no-explicit-any */
+export default function EducationForm({onChange, degree, field,school, city, country, start,end}:any){
     return(
         <div  className="w-[75%] h-[80%] flex flex-col  ">
             <h1 className="self-center font-signika text-4xl">Education Information</h1>
