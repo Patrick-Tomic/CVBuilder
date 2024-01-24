@@ -21,6 +21,9 @@ body{
 main{
     background-color: $primary;
 }
+#hidden{
+    display: none;
+}
 #headerHeading{
     font-family: 'Libre Baskerville', system-ui;
 }

@@ -1,19 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Contact from "./firstPhase"
-import EducationForm from "./education/secondPhase"
+import Contact from "./components/firstPhase"
+import EducationForm from "./components/education/secondPhase"
+import AddEducationComponent from "./components/education/addEducationSection"
 import { useState } from "react"
 import Resume from "./resume"
 export default function App(){
-   
-  
+     
     const [education, setEducation] = useState( {
         degree:'',
         field:'',
-        school: '',
-        city: '',
-        country: '',
+        name: '',
+        location: '',
         start: '',
-        end: ''
+        end: '',
+        id: null
     })
     const [personal, setPersonal] = useState( {
         name:'',
@@ -22,6 +23,12 @@ export default function App(){
         address: '',
         next:false
        })
+            //Education Form var
+            const educationForm = <EducationForm onChange = {handleEducationChange} degree={education.degree} field = {education.field} name = {education.name} location = {education.location} start = {education.start} end = {education.end} id = {education.id}/>
+            //onCancel function
+            
+            //onRemove function
+
     function handleEducationChange(e: { target: { dataset: { key: any }; value: any } }){
         const {key} = e.target.dataset
         setEducation({...education, [key]:e.target.value})
@@ -33,56 +40,28 @@ export default function App(){
                 return
             }
             setPersonal({...personal, [key]:true})
-        
         }else{
             setPersonal({...personal, [key]:e.target.value})
-        }   
+        }
     }
-let educationForm =  <div className=" flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5">
-    <EducationForm
-    onChange={handleEducationChange}
-    degree = {education.degree}
-    field = {education.field}
-    school = {education.school}
-    city = {education.city}
-    start = {education.start}
-    end = {education.end}
-    />
-</div>
-let contactComponent =   <div className=" flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5"> 
-<Contact onChange={handleContactInfoChange}
-  name={personal.name}
-  email={personal.email}
-  number={personal.number}
-  address={personal.address}
-  next = {personal.next} />
-  </div>
-  if(personal.next === true){
-    contactComponent = <div className="hidden flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5"> 
-    <Contact onChange={handleContactInfoChange}
-      name={personal.name}
-      email={personal.email}
-      number={personal.number}
-      address={personal.address}
-      next = {personal.next} />
-      </div>
-     educationForm =  <div className="flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5">
-      <EducationForm 
-      onChange={handleEducationChange}
-      degree = {education.degree}
-      field = {education.field}
-      school = {education.school}
-      city = {education.city}
-      start = {education.start}
-      end = {education.end}
-      />
-  </div>
-  }
+ 
 
  return(
     <main className="flex h-[95%] w-[95%] bg-white text-black">
-        {/* {contactComponent} */}
-        {educationForm}
+        <div className=" flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5"> 
+          <Contact onChange={handleContactInfoChange}
+                name={personal.name}
+                email={personal.email}
+                number={personal.number}
+                address={personal.address}
+                next = {personal.next} />
+            <AddEducationComponent 
+            education = {education}
+            onChange = {handleEducationChange}
+            createForm = {educationForm}
+            />
+        </div>  
+
         <Resume personal={personal} />
     </main>
  )

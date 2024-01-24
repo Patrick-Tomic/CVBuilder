@@ -1,4 +1,4 @@
-import Header from './header'
+import Header from './components/header'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export default function Resume({personal}:any){
 return (
