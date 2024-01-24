@@ -1,6 +1,5 @@
- 
- 
-export default function InputSection(props){
+import { ChangeEventHandler } from "react";
+export default function InputSection(props: {value:string; text:string; type:string; placeholder:string; dataKey:string; onChange: ChangeEventHandler<HTMLInputElement> | undefined}){
     return(
     <div className="flex flex-col">
     <label htmlFor={props.value}>{props.text}</label>
