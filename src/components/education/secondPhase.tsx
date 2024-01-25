@@ -4,7 +4,7 @@
 import InputSection from "../input"
 export default function EducationForm({onChange, degree, name, field,location, start,end, id}:any){
     return(
-        <div  className="w-[75%] h-[80%] flex flex-col  ">
+        <div    className="educationForm w-[75%] h-[80%] flex flex-col  ">
             <h1 className="self-center font-signika text-4xl">Education Information</h1>
             <div className="bg-steel flex mt-5 text-white flex-col items-center h-[100%]  rounded-xl p-2">
                 <form className="flex h-[90%] justify-around flex-col" action="">
