@@ -14,6 +14,7 @@ export default function App(){
         location: '',
         start: '',
         end: '',
+        hidden:true,
         id: null
     })
     const [personal, setPersonal] = useState( {
@@ -24,7 +25,11 @@ export default function App(){
         next:false
        })
             //Education Form var
-            const educationForm = <EducationForm onChange = {handleEducationChange} degree={education.degree} field = {education.field} name = {education.name} location = {education.location} start = {education.start} end = {education.end} id = {education.id}/>
+            const educationForm = () => {
+            const form =<EducationForm onChange = {handleEducationChange} degree={education.degree} field = {education.field} name = {education.name} location = {education.location} start = {education.start} end = {education.end} id = {education.id}/>
+            const main = document.querySelector('main')
+             
+        }
             //onCancel function
             
             //onRemove function
@@ -39,13 +44,16 @@ export default function App(){
             if(personal.name === ''|| personal.email === '' || personal.number === '' || personal.address === ''){
                 return
             }
+      
             setPersonal({...personal, [key]:true})
+            setEducation({...education, hidden:false})
+           
+             
         }else{
             setPersonal({...personal, [key]:e.target.value})
         }
+         
     }
- 
-
  return(
     <main className="flex h-[95%] w-[95%] bg-white text-black">
         <div className=" flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5"> 
@@ -62,7 +70,7 @@ export default function App(){
             />
         </div>  
 
-        <Resume personal={personal} />
+        <Resume personal={personal} education ={education}/>
     </main>
  )
 }

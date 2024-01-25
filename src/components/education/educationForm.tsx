@@ -2,12 +2,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
  
 import InputSection from "../input"
-export default function EducationForm({onChange, degree, name, field,location, start,end, id}:any){
+export default function EducationForm({array, onChange, degree, name,location, start,end}:any){
     return(
         <div    className="educationForm w-[75%] h-[80%] flex flex-col  ">
             <h1 className="self-center font-signika text-4xl">Education Information</h1>
             <div className="bg-steel flex mt-5 text-white flex-col items-center h-[100%]  rounded-xl p-2">
-                <form className="flex h-[90%] justify-around flex-col" action="">
+                <form className="flex h-[90%] justify-around flex-col" onSubmit={(e) => e.preventDefault()}>
                 <InputSection
                     value = { name}
                     dataKey="name"
@@ -18,19 +18,11 @@ export default function EducationForm({onChange, degree, name, field,location, s
                     />
                     <InputSection 
                     value = { degree}
-                    placeholder="Bachelors"
+                    placeholder="Bachelors of Business"
                     text = 'Degree Type:'
                     onChange = {onChange}
                     type = 'text'
                     dataKey="degree"
-                    />
-                     <InputSection 
-                    value = {field}
-                    placeholder="Information & Computer Science"
-                    text = 'Field:'
-                    onChange = {onChange}
-                    type = 'text'
-                    dataKey="field"
                     />
                      <InputSection 
                     value = { location}
@@ -42,20 +34,22 @@ export default function EducationForm({onChange, degree, name, field,location, s
                     />
                       <InputSection 
                     value = { start}
-                    placeholder="09/21/2017"
+                    placeholder="09/2017"
                     text = 'Start Date:'
                     onChange = { onChange}
-                    type = 'date'
+                    type = 'string'
                     dataKey="start"
                     />
                       <InputSection 
                     value = { end}
-                    placeholder="10/22/2019"
+                    placeholder="12/2019"
                     text = 'End Date:'
                     onChange = {onChange}
-                    type = 'date'
+                    type = 'string'
                     dataKey="end"
                     />
+                    <button type="submit"  
+                     className="border-2 border-black bg-white text-black rounded w-fit p-1 ml-[5vw]">Submit</button>
             </form>
             
             </div>
