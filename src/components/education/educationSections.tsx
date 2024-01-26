@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import DisplaySections from "../../displaySections";
-export default function EducationSections(array, infoComp, title){
+export default function EducationSections(array: any, infoComp: any, title: any){
     
     return(
         <div>

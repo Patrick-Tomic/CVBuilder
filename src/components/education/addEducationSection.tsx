@@ -7,7 +7,7 @@ import CreateForm from "../createForm";
     
     return (
         <div className="educationSection" /* id="hidden" */>
-        <EducationForm array={educations} onChange = {props.onChange} degree = {educationProp.degree} name = {educationProp.name }field = {educationProp.field } location = {educationProp.location } start = {educationProp.start }end= {educationProp.end } id= {educationProp.id } />
+        <EducationForm array={educations} id = {id} onChange = {props.onChange} degree = {educationProp.degree} name = {educationProp.name }field = {educationProp.field } location = {educationProp.location } start = {educationProp.start }end= {educationProp.end } id= {educationProp.id } />
         <CreateForm onclick= { () =>{console.log('click')}} text="Education"/>
         </div>
     )

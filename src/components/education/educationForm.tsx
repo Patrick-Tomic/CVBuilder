@@ -2,12 +2,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
  
 import InputSection from "../input"
-export default function EducationForm({array, onChange, degree, name,location, start,end}:any){
+export default function EducationForm({array, onChange, degree, name,location, start,end, id}:any){
     return(
-        <div    className="educationForm w-[75%] h-[80%] flex flex-col  ">
+        <div  className="educationForm sectionForm w-[75%] h-[80%] flex flex-col  ">
             <h1 className="self-center font-signika text-4xl">Education Information</h1>
             <div className="bg-steel flex mt-5 text-white flex-col items-center h-[100%]  rounded-xl p-2">
-                <form className="flex h-[90%] justify-around flex-col" onSubmit={(e) => e.preventDefault()}>
+                <form className="flex h-[90%] justify-around flex-col" id={id} onSubmit={(e) => e.preventDefault()} data-array-name="educations">
                 <InputSection
                     value = { name}
                     dataKey="name"
