@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Key } from "react";
+ 
 import CollapsedForm from "./CollapsedForm";
 export default function DisplayForms({
     forms, onChange, onCancel, onHide, toggleCollapse, onRemove, 
     FormComponent,titleKey, arrayName}:any){
         return (
-            <div className = "forms-container">
-                {forms.map((form: { [x: string]: any; collapsed: any; id: Key | null | undefined; }) => 
+            <div className = "forms-container" >
+                {forms.map((form:any) => 
                 form.collapsed ? (
                     <CollapsedForm onClick = {toggleCollapse}
                     key = {form.id}
@@ -14,7 +14,7 @@ export default function DisplayForms({
                     title = {form[titleKey]}
                     arrayName={arrayName}
                     hideForm = {onHide}
-                    /> ): (
+                    /> ):(
                         <FormComponent 
                         onChange = {onChange}
                         form = {form}

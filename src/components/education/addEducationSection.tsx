@@ -3,22 +3,22 @@ import EducationForm from "./educationForm";
 import DisplayForms from "../displayForm";
 import CreateForm from "../createForm";
  export default function AddEducationComponent(props:any){
-    const educations = props.infoArray
+    
    
     return (
-        <div className="educationSection addEducationSection" /* id="hidden" */>
+        <div className="educationSection addEducationSection"  id="hidden" >
         <DisplayForms 
-        array={educations}  
+        forms={props.array}  
         FormComponent = {EducationForm}
         onChange = {props.onChange} 
         onCancel = {props.onCancel}
         onHide = {props.onHide}
         onRemove = {props.onRemove}
         toggleCollapse = {props.toggleCollapse}
-        titleKey = 'SchoolName'
+        titleKey = 'name'
         arrayName = 'educations'
         />
-        <CreateForm onclick= { () =>{console.log('click')}} text="Education"/>
+        <CreateForm onclick= {props.createForm} text="Education"/>
         </div>
     )
 }  
