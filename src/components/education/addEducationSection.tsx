@@ -15,7 +15,6 @@ import CreateForm from "../createForm";
         onHide = {props.onHide}
         onRemove = {props.onRemove}
         toggleCollapse = {props.toggleCollapse}
-        titleKey = 'name'
         arrayName = 'educations'
         />
         <CreateForm onclick= {props.createForm} text="Education"/>

@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
  
+import { Key } from "react"
 import InputSection from "../input"
-export default function EducationForm({ onChange, degree, name,location, start,end, id}:any){
+export default function EducationForm({onChange, degree, name,location, start,end,collapsed,hidden, id}:any, key: Key | null | undefined, cancel, save, remove){
+ 
     return(
-        <div  className="educationForm sectionForm w-[75%] h-[80%] flex flex-col  ">
+      
+        <div key = {key}  className="educationForm sectionForm w-[75%] h-[80%] flex flex-col  ">
             <h1 className="self-center font-signika text-4xl">Education Information</h1>
             <div className="bg-steel flex mt-5 text-white flex-col items-center h-[100%]  rounded-xl p-2">
-                <form className="section-form education-form flex h-[90%] justify-around flex-col" id={id} onSubmit={(e) => e.preventDefault()} data-array-name="educations">
+                <form className="section-form education-form flex h-[90%] justify-around flex-col"   id={id} onSubmit={(e) => e.preventDefault()} data-array-name="educations">
                 <InputSection
                     value = { name}
                     dataKey="name"
