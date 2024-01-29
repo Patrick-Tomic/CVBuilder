@@ -1,5 +1,6 @@
-import { ChangeEventHandler } from "react";
-export default function InputSection(props: {value:string; text:string; type:string; placeholder:string; dataKey:string; onChange: ChangeEventHandler<HTMLInputElement> | undefined}){
+ 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function InputSection(props: {value:string; text:string; type:string; placeholder:string; dataKey:string; onChange: any| undefined}){
     return(
     <div className="flex flex-col">
     <label htmlFor={props.value}>{props.text}</label>

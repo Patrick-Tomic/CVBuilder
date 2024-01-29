@@ -44,9 +44,13 @@ export default function Contact({onChange,name, email,number, address,next}:any)
               dataKey = 'address'
               />
               <button onClick={() =>{
-                document.querySelector('#personal')?.setAttribute('id','hidden')
-                document.querySelector('.educationSection')?.setAttribute('id','education')
-                onChange
+
+            if(name === ''|| email === '' || number === '' || address === ''){
+              return
+            }     
+            document.querySelector('#personal')?.setAttribute('id','hidden')
+            document.querySelector('.educationSection')?.setAttribute('id','education')
+                   
               }}  className="border-solid border-2 hover:bg-hover text-black bg-white border-black w-2/5 self-center mt-5" value={next} data-key='next' >Next</button>
             </form>
         </div>

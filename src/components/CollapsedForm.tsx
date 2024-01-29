@@ -2,7 +2,7 @@
 export default function CollapsedForm(props: { form?: any; onClick?: any; hideForm?: any; title?: any; arrayName?: any }){
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {onClick, hideForm, title, arrayName} = props
-    const { id} = props.form
+    const {id} = props.form
     return (
         <button
         className = "collapsedForm sectionForm" id = {id}

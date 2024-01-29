@@ -6,12 +6,12 @@ export default function DisplaySections({array, InfoComp, title}:any){
 return(
     <React.Fragment>
        {
-        !array.every((object:{degree:string; name:string; location:string; start:string; end:string; isHidden:boolean;}) => object.isHidden) && (
+        !array.every((object:{degree:string, name:string, location:string, start:string, end:string, hidden:boolean, collapsed:boolean, id:string}) => object.hidden) && (
             <h2 className="sectionHeader">{title}</h2>
         )
        }
         {
-        array.map((obj:{degree:string; name:string; location:string; start:string; end:string; isHidden:boolean;}) => !obj.isHidden && <InfoComp props = {obj} />)
+        array.map((obj:{degree:string, name:string, location:string, start:string, end:string, hidden:boolean, collapsed:boolean, id:string}) => !obj.hidden && <InfoComp props = {obj} />)
         }
     </React.Fragment>
 )

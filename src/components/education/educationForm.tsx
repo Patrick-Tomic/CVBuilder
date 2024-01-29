@@ -1,26 +1,28 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
- 
-import { Key } from "react"
 import InputSection from "../input"
-export default function EducationForm({onChange, degree, name,location, start,end,collapsed,hidden, id}:any, key: Key | null | undefined, cancel, save, remove){
- 
+export default function EducationForm(props:{onChange?:any, form?:any,cancel?:any,save?:any,remove?:any }){
+    const form = props.form
+  console.log(form)
+     
+    const onChange = props.onChange
+    
     return(
       
-        <div key = {key}  className="educationForm sectionForm w-[75%] h-[80%] flex flex-col  ">
+        <div  className="educationForm sectionForm w-[75%] h-[80%] flex flex-col  ">
             <h1 className="self-center font-signika text-4xl">Education Information</h1>
             <div className="bg-steel flex mt-5 text-white flex-col items-center h-[100%]  rounded-xl p-2">
-                <form className="section-form education-form flex h-[90%] justify-around flex-col"   id={id} onSubmit={(e) => e.preventDefault()} data-array-name="educations">
+                <form className="section-form education-form flex h-[90%] justify-around flex-col"  id = {form.id}  onSubmit={(e) => e.preventDefault()} data-array-name="educations">
                 <InputSection
-                    value = { name}
+                    value = {form.name}
                     dataKey="name"
                     placeholder="University of South Florida"
                     text="Institution:"
-                    onChange={ onChange}
+                    onChange={onChange}
                     type = 'text'
                     />
                     <InputSection 
-                    value = { degree}
+                    value = {form.degree}
                     placeholder="Bachelors of Business"
                     text = 'Degree Type:'
                     onChange = {onChange}
@@ -28,7 +30,7 @@ export default function EducationForm({onChange, degree, name,location, start,en
                     dataKey="degree"
                     />
                      <InputSection 
-                    value = { location}
+                    value = {form.location}
                     placeholder="Tampa,Fl:"
                     text = 'Location:'
                     onChange = {onChange}
@@ -36,15 +38,15 @@ export default function EducationForm({onChange, degree, name,location, start,en
                     dataKey="location"
                     />
                       <InputSection 
-                    value = { start}
+                    value = {form.start}
                     placeholder="09/2017"
                     text = 'Start Date:'
-                    onChange = { onChange}
+                    onChange = {onChange}
                     type = 'string'
                     dataKey="start"
                     />
                       <InputSection 
-                    value = { end}
+                    value = {form.end}
                     placeholder="12/2019"
                     text = 'End Date:'
                     onChange = {onChange}

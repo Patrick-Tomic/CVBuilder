@@ -20,7 +20,16 @@ export default function App(){
         next:false
        })
     const [sections, setSections] = useState<sections>({
-         educations:[],
+         educations:[{
+            degree:'',
+            name: '',
+            location: '',
+            start: '',
+            end: '',
+            hidden:false,
+            collapsed:false,
+            id:uniqid()
+            }],
          experience:[],
          skills:[]
     })
@@ -31,8 +40,7 @@ export default function App(){
         const {key} = e.target.dataset
         const inputValue = e.target.value
         const form = e.target.closest('.section-form')
-        const {id} = form.id
-        console.log(id)
+        const id = form.id
         const {arrayName} = form.dataset 
         const array:'educations'|'experience'|'skills' = arrayName
         const section = sections[array]
@@ -43,31 +51,27 @@ export default function App(){
                 if(obj.id === id) {
                     obj[key] = inputValue
                 }
+                
             })
         })  
+         
     }  
 
     function handleContactInfoChange(e: { target: { dataset: { key: any }; value: any } }){
         const {key} = e.target.dataset
-        if(key === 'next'){
-            if(personal.name === ''|| personal.email === '' || personal.number === '' || personal.address === ''){
-                return
-            }
-            setPersonal({...personal, [key]:true})     
-        }else{
             setPersonal({...personal, [key]:e.target.value})
-        }
     }
 
-    function createForm(arrayName:'educations'|'experience'|'skills', object: { degree: string; name: string; location: string; start: string; end: string; hidden: boolean; collapsed: boolean; id: string; }){
+    function createForm(arrayName:'educations'|'experience'|'skills', object: { degree: string; name: string; location: string; start: string; end: string; hidden: boolean; collapsed: boolean; id: any; }){
         setPrevState(null)
         const section:any[]= structuredClone(sections[arrayName])
         section.push(object)
+       
         setSections({...sections, [arrayName]:section})
         return
        }  
 //Education Form var
-    const createEducationForm = () =>
+    const createEducationForm = () =>{
         createForm('educations', {
         degree:'',
         name: '',
@@ -78,6 +82,7 @@ export default function App(){
         collapsed:false,
         id:uniqid()
         }) 
+    }
         //experience
     //onRemove function
     function removeForm(e: { target: { closest: (arg0: string) => any; }; }) {

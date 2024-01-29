@@ -6,7 +6,7 @@ import CreateForm from "../createForm";
     
    
     return (
-        <div className="educationSection addEducationSection"  id="hidden" >
+        <div className="educationSection addEducationSection w-[100%]"  id="hidden" >
         <DisplayForms 
         forms={props.array}  
         FormComponent = {EducationForm}
@@ -17,7 +17,7 @@ import CreateForm from "../createForm";
         toggleCollapse = {props.toggleCollapse}
         arrayName = 'educations'
         />
-        <CreateForm onclick= {props.createForm} text="Education"/>
+        <CreateForm onclick= {props.createForm } text="Education"/>
         </div>
     )
 }  
