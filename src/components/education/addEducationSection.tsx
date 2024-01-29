@@ -7,8 +7,8 @@ import CreateForm from "../createForm";
    
     return (
         <div className="educationSection addEducationSection w-[100%]"  id="hidden" >
-        <DisplayForms 
-        forms={props.array}  
+         <DisplayForms 
+        forms={props.educations}  
         FormComponent = {EducationForm}
         onChange = {props.onChange} 
         onCancel = {props.onCancel}

@@ -20,46 +20,41 @@ export default function App(){
         next:false
        })
     const [sections, setSections] = useState<sections>({
-         educations:[{
-            degree:'',
-            name: '',
-            location: '',
-            start: '',
-            end: '',
-            hidden:false,
-            collapsed:false,
-            id:uniqid()
-            }],
+         educations:[],
          experience:[],
          skills:[]
     })
+     
     //for onCancel 
       const [prevState, setPrevState] = useState(null)
          
       function handleSectionChange(e: { target: { dataset: { key: any; }; value: any; closest: (arg0: string) => any; }; }){
         const {key} = e.target.dataset
+
         const inputValue = e.target.value
         const form = e.target.closest('.section-form')
         const id = form.id
         const {arrayName} = form.dataset 
         const array:'educations'|'experience'|'skills' = arrayName
         const section = sections[array]
-    
+       const newSection = section.map((obj) => {
+            if(obj.id === id) {
+                console.log(key)
+                console.log(inputValue)
+                obj[key] = inputValue
+            }  
+        })
+        console.log(newSection)
          setSections({
             ...sections,
-            [arrayName]: section.map((obj) => {
-                if(obj.id === id) {
-                    obj[key] = inputValue
-                }
-                
+            [arrayName]: section
             })
-        })  
-         
     }  
 
     function handleContactInfoChange(e: { target: { dataset: { key: any }; value: any } }){
         const {key} = e.target.dataset
             setPersonal({...personal, [key]:e.target.value})
+            console.log(personal)
     }
 
     function createForm(arrayName:'educations'|'experience'|'skills', object: { degree: string; name: string; location: string; start: string; end: string; hidden: boolean; collapsed: boolean; id: any; }){
@@ -142,7 +137,7 @@ const toggleHidden = (e: { target: { closest: (arg0: string) => any; }; }) => to
                 address={personal.address}
                 next = {personal.next} /> 
              <AddEducationComponent 
-            array = {sections.educations}
+            educations = {sections.educations}
             onChange = {handleSectionChange}
             createForm = {createEducationForm}
             onCancel = {cancelForm}

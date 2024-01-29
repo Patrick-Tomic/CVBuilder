@@ -2,9 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import InputSection from "../input"
 export default function EducationForm(props:{onChange?:any, form?:any,cancel?:any,save?:any,remove?:any }){
-    const form = props.form
-  console.log(form)
-     
+    const form = props.form  
     const onChange = props.onChange
     
     return(
