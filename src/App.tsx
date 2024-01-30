@@ -20,7 +20,18 @@ export default function App(){
         next:false
        })
     const [sections, setSections] = useState<sections>({
-         educations:[],
+         educations:[
+            {
+                degree:'',
+                name: '',
+                location: '',
+                start: '',
+                end: '',
+                hidden:false,
+                collapsed:false,
+                id:uniqid()
+                }
+         ],
          experience:[],
          skills:[]
     })
@@ -35,26 +46,24 @@ export default function App(){
         const form = e.target.closest('.section-form')
         const id = form.id
         const {arrayName} = form.dataset 
-        const array:'educations'|'experience'|'skills' = arrayName
+        const array:'educations' = arrayName
         const section = sections[array]
-       const newSection = section.map((obj) => {
-            if(obj.id === id) {
-                console.log(key)
-                console.log(inputValue)
-                obj[key] = inputValue
-            }  
-        })
-        console.log(newSection)
+       
          setSections({
             ...sections,
-            [arrayName]: section
-            })
+            [arrayName]:section.map((obj:any) => {
+            if(obj.id === id) {
+                obj[key] = inputValue
+                return obj
+            }  
+        
+        })
+            })        
     }  
 
     function handleContactInfoChange(e: { target: { dataset: { key: any }; value: any } }){
         const {key} = e.target.dataset
             setPersonal({...personal, [key]:e.target.value})
-            console.log(personal)
     }
 
     function createForm(arrayName:'educations'|'experience'|'skills', object: { degree: string; name: string; location: string; start: string; end: string; hidden: boolean; collapsed: boolean; id: any; }){
