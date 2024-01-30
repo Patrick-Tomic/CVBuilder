@@ -4,7 +4,7 @@ import InputSection from "../input"
 export default function EducationForm(props:{onChange?:any, form?:any,cancel?:any,save?:any,remove?:any }){
     const form = props.form  
     const onChange = props.onChange
-    
+   
     return(
       
         <div  className="educationForm sectionForm w-[75%] h-[80%] flex flex-col  ">

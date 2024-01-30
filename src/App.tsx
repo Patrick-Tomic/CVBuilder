@@ -41,17 +41,18 @@ export default function App(){
          
       function handleSectionChange(e: { target: { dataset: { key: any; }; value: any; closest: (arg0: string) => any; }; }){
         const {key} = e.target.dataset
-
+        
         const inputValue = e.target.value
         const form = e.target.closest('.section-form')
         const id = form.id
         const {arrayName} = form.dataset 
         const array:'educations' = arrayName
         const section = sections[array]
-       
+        
          setSections({
             ...sections,
             [arrayName]:section.map((obj:any) => {
+                
             if(obj.id === id) {
                 obj[key] = inputValue
                 return obj
@@ -134,6 +135,8 @@ export default function App(){
         })
     })
 }
+const educations = sections.educations
+
 const toggleCollapsed = (e: { target: { closest: (arg0: string) => any; }; }) => toggleValue(e, 'collapsed')
 const toggleHidden = (e: { target: { closest: (arg0: string) => any; }; }) => toggleValue(e,'hidden')
  return(
@@ -155,7 +158,7 @@ const toggleHidden = (e: { target: { closest: (arg0: string) => any; }; }) => to
             onRemove = {removeForm}
             />   
         </div>
-        <Resume personal={personal} sections = {sections}/>
+        <Resume personal={personal} educations = {educations}/>
        
     </main>
  )
