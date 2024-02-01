@@ -4,23 +4,22 @@
 export default function EducationSection({props}:any){
      const {degree, name, location, start, end} = props
     let dash  
-    let comma
-    if(name === '' || location === ''){
-        comma = ''
-    }
-    else{ 
-        comma = <p>, </p>
-    }
+   
     if(start === '' || end === ''){
         dash = <p id='hidden'>-</p>
     }else{
         dash = <p id ='clear'>-</p>}
     return(
   
-        <div className="flex flex-col"  >
-            <div className="flex"> {start}{dash}{end}</div>
-            <div className="flex">{degree}</div>
-            <div className="flex">{name}{comma}{location}</div>
+        <div className="flex flex-col border-t-2  border-black"  >
+            <div className="flex self-center text-xl font-bold">{degree}</div>
+            <div className="flex justify-around p-5">
+            <div className="flex flex-col"> 
+            <p className="flex text-lg">{start}{dash}{end}</p>
+            <p className="text-lg">{location}</p>
+            </div>
+            <p className="text-lg font-bold">{name}</p>
+            </div>
         </div>
     )
 }

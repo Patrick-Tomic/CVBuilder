@@ -5,7 +5,8 @@ import InputSection from "./input"
 //* eslint-disable @typescript-eslint/no-explicit-any */
  
 export default function Contact({onChange,name, email,number, address,next}:any){
- 
+  // eslint-disable-next-line no-useless-escape
+  const emailPattern = `/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;`
     return (
         <div id = 'personal' className="w-[75%] h-[80%] flex flex-col  ">
         <h1 className="self-center font-signika text-4xl">Personal Information</h1>
@@ -21,6 +22,7 @@ export default function Contact({onChange,name, email,number, address,next}:any)
               />
               <InputSection
               type = 'email'
+              pattern={emailPattern}
               placeholder ='John32Doo@aol.com'
               value = {email}
               text = 'Email Address:'
@@ -31,7 +33,8 @@ export default function Contact({onChange,name, email,number, address,next}:any)
               type = 'tel'
               placeholder = '332-521-9836'
               value = {number}
-              text = 'Phone Number'   
+              text = 'Phone Number' 
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"  
               onChange = {onChange}
               dataKey = 'number'
               />
@@ -45,7 +48,7 @@ export default function Contact({onChange,name, email,number, address,next}:any)
               />
               <button onClick={() =>{
 
-            if(name === ''|| email === '' || number === '' || address === ''){
+            if(name === ''|| email === '' || number.length <= 10 || address === ''){
               return
             }     
             document.querySelector('#personal')?.setAttribute('id','hidden')
