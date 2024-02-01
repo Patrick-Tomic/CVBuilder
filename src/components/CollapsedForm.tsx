@@ -1,21 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export default function CollapsedForm(props: { form?: any; onClick?: any; hideForm?: any; title?: any; arrayName?: any }){
+export default function CollapsedForm(props: { form?: any; onClick?: any; hideForm?: any; title?: any; arrayName?: any, key: any }){
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {onClick, hideForm, title, arrayName} = props
-    const {id} = props.form
+    const form = props.form
+     console.log(form.id)
     return (
         <button
-        className = "collapsedForm sectionForm" id = {id}
+        className = "collapsedForm section-form" id = {form.id}
         onClick = {onClick}
         data-array-name = {arrayName}
         >
             <p className="collapsed-form-title">{title}</p>
-            <i onClick={ (e) =>{
+           {/*  <i onClick={ (e) =>{
                 e.stopPropagation()
                 hideForm(e)
             }
             }>
-            </i>
+            </i> */}
         </button>
     )
 }

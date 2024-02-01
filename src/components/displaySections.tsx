@@ -3,7 +3,6 @@ import React from "react";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function DisplaySections(props:any){
     const {array, title, InfoComp} = props 
-    
 return(
     <React.Fragment>
        {

@@ -55,6 +55,7 @@ export default function App(){
                 
             if(obj.id === id) {
                 obj[key] = inputValue
+                 
                 return obj
             }  
         
@@ -92,10 +93,10 @@ export default function App(){
     //onRemove function
     function removeForm(e: { target: { closest: (arg0: string) => any; }; }) {
         const form = e.target.closest('.section-form')
-        const arrayName: 'educations'|'experience'|'skills' = form.dataset
-        const section = sections[arrayName]
+        const {arrayName} = form.dataset 
+        const array:'educations' = arrayName
+        const section:any[] = sections[array]
         const {id} = form
-
         setSections({
             ...sections, [arrayName]: section.filter((item) => item.id !== id),
         })
@@ -119,17 +120,20 @@ export default function App(){
         return form})
         })
     }
-   function toggleValue(e: { target: { closest: (arg0: string) => any; }; },key: string | number){
-    const sectionForm = e.target.closest('section-form')
+   function toggleValue(e: { target:any},key: string | number){
+    const sectionForm = e.target.closest('.section-form')
     const {id} = sectionForm
-    const arrayName:'educations'|'experience'|'skills' = sectionForm.dataset
-    const section = sections[arrayName]
-
+    const {arrayName} = sectionForm.dataset
+    const array:'educations'|'experience'|'skills' = arrayName
+    const section:any[] = sections[array]
+     
     setSections({
         ...sections, [arrayName]:section.map((form) => {
             if(form.id === id){
                 setPrevState(Object.assign({},form))
                 form[key] = !form[key]
+                console.log(section)
+                console.log('works')
             }
             return form
         })
