@@ -10,7 +10,7 @@ export default function Contact({onChange,name, email,number, address,next}:any)
         <div id = 'personal' className="w-[75%] h-[80%] flex flex-col  ">
         <h1 className="self-center font-signika text-4xl">Personal Information</h1>
         <div className="bg-steel flex mt-5 text-white flex-col items-center h-[100%]  rounded-xl p-2">
-            <form /* onSubmit={(e) => e.preventDefault()}  */ className="flex h-[90%] justify-around flex-col" >
+            <form  onSubmit={(e) => e.preventDefault()}   className="flex h-[90%] justify-around flex-col" >
               <InputSection
               type = 'text'
               placeholder = 'John Eric Doo'

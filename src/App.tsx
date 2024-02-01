@@ -12,6 +12,7 @@ interface sections{
     skills:any[]
 }
 export default function App(){
+
     const [personal, setPersonal] = useState( {
         name:'',
         email: '',
@@ -35,7 +36,7 @@ export default function App(){
          experience:[],
          skills:[]
     })
-     
+      
     //for onCancel 
       const [prevState, setPrevState] = useState(null)
          
@@ -48,18 +49,19 @@ export default function App(){
         const {arrayName} = form.dataset 
         const array:'educations' = arrayName
         const section = sections[array]
-        
+        const clone  = section.map((obj:any) => {
+                 
+            if(obj.id === id) {
+                obj[key] = inputValue 
+                 return obj
+            }  else{
+                return obj
+            }
+        })
+        section.push(clone)
          setSections({
             ...sections,
-            [arrayName]:section.map((obj:any) => {
-                
-            if(obj.id === id) {
-                obj[key] = inputValue
-                 
-                return obj
-            }  
-        
-        })
+            [arrayName]: clone
             })        
     }  
 
