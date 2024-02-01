@@ -12,7 +12,8 @@ export default {
         'hover':'#2ECCC0',
       },
       fontFamily:{
-        'signika': ['Signika Negative','system-ui']
+        'signika': ['Signika Negative','system-ui'],
+        'ptSerika':['PT Serif', 'system-ui']
       }
   },
 },

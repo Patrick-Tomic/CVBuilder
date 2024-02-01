@@ -6,7 +6,7 @@ import CreateForm from "../createForm";
     
    
     return (
-        <div className="educationSection addEducationSection w-[100%]"  id="hidden" >
+        <div className="educationSection addEducationSection w-[100%] flex flex-col"  id="hidden" >
          <DisplayForms 
         forms={props.educations}  
         FormComponent = {EducationForm}

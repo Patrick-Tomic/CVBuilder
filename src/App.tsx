@@ -92,6 +92,7 @@ export default function App(){
         }) 
     }
         //experience
+
     //onRemove function
     function removeForm(e: { target: { closest: (arg0: string) => any; }; }) {
         const form = e.target.closest('.section-form')
@@ -99,16 +100,35 @@ export default function App(){
         const array:'educations' = arrayName
         const section:any[] = sections[array]
         const {id} = form
+        const collapsed = document.querySelectorAll('.collapsedForm')
+        collapsed.forEach((form) => {
+            form.setAttribute('style','display:block;')
+            
+    })
         setSections({
             ...sections, [arrayName]: section.filter((item) => item.id !== id),
+           
         })
+        document.querySelector('.createFormBtn')?.setAttribute('id','btn')
     }
+    //createForm EventListner
+    const createFormBtn = document.querySelector('.createFormBtn')
+    createFormBtn?.addEventListener('click',() =>{
+        createFormBtn.id = 'hidden'
+        document.querySelectorAll('.collapsedForm').forEach((form) => {
+            form.setAttribute('style','display:none')
+        })
+    })
+     
+   
     //onCancel function
     function cancelForm(e: { target: any; }){
         if(prevState === null){
             removeForm(e)
+            
             return
         }
+       
         const sectionForm = e.target.closest('section-form')
         const {id} = sectionForm
         const arrayName: 'educations'|'experience'|'skills' = sectionForm.dataset 
@@ -119,6 +139,7 @@ export default function App(){
                 form = prevState
                 form.collapsed = true
             }
+            document.querySelector('.createFormBtn')?.setAttribute('id','btn')
         return form})
         })
     }
@@ -128,14 +149,24 @@ export default function App(){
     const {arrayName} = sectionForm.dataset
     const array:'educations'|'experience'|'skills' = arrayName
     const section:any[] = sections[array]
-     
+  
     setSections({
         ...sections, [arrayName]:section.map((form) => {
             if(form.id === id){
                 setPrevState(Object.assign({},form))
+                if(form[key] === true){
+                    const collapsed = document.querySelectorAll('.collapsedForm')
+                    collapsed.forEach((form) => {
+                        form.setAttribute('style','display:none;')
+                    })
+                }else{
+                    const collapsed = document.querySelectorAll('.collapsedForm')
+                    collapsed.forEach((form) => {
+                        form.setAttribute('style','display:block;')
+                })
+            }
+          
                 form[key] = !form[key]
-                console.log(section)
-                console.log('works')
             }
             return form
         })
@@ -143,7 +174,10 @@ export default function App(){
 }
 const educations = sections.educations
 
-const toggleCollapsed = (e: { target: { closest: (arg0: string) => any; }; }) => toggleValue(e, 'collapsed')
+const toggleCollapsed = (e: { target: { closest: (arg0: string) => any; }; }) =>{
+     toggleValue(e, 'collapsed')
+     document.querySelector('.createFormBtn')?.setAttribute('id','btn')
+}
 const toggleHidden = (e: { target: { closest: (arg0: string) => any; }; }) => toggleValue(e,'hidden')
  return(
     <main className="flex h-[95%] w-[95%] bg-white text-black">

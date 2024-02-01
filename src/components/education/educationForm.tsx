@@ -52,14 +52,14 @@ export default function EducationForm(props:{onChange?:any, form?:any,cancel?:an
                     dataKey="end"
                     />
                     <div>
-                    <button type="button" onClick = {props.cancel}>Cancel</button>
+             
                     <button type="submit"
-                    onClick={ props.save}
+                    onClick={props.save}
                      className="border-2 border-black bg-white text-black rounded w-fit p-1 ml-[5vw]">Submit</button>
                      <button type="button" onClick={props.remove}>Remove</button>
                      </div>
             </form>
-        </>
+            </>
 
     )
 

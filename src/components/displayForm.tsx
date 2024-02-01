@@ -6,7 +6,7 @@ export default function DisplayForms({
     FormComponent, arrayName}:any){
        
         return (
-            <div className = "forms-container w-[100%] h-[80%] flex flex-col " >
+            <div className = "forms-container w-[75%] h-[80%] flex flex-col m-12 " >
                { forms.map((form:{degree:string, name:string, location:string, start:string, end:string, hidden:boolean, collapsed:boolean, id:string}) =>                     
       form.collapsed ? (
        <CollapsedForm onClick = {toggleCollapse}
