@@ -11,11 +11,11 @@ export default function ExperienceComponent(props:any){
             FormComponent = {ExperienceForm}
             onChange = {props.onChange}
             
-            onRemove = {props.onRemove}
+            remove = {props.onRemove}
             toggleCollapse = {props.toggleCollapse}
             arrayName = 'experience'
             />
-            <CreateForm onclick={props.createForm} text='Add'/>
+            <CreateForm onclick={props.createForm} text='Experience'/>
             <button>Next</button>
         </div>
     )

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MouseEventHandler } from "react";
+ 
 import InputSection from "../input";
-export default function ExperienceForm(props: { form: any; onChange: any; save: MouseEventHandler<HTMLButtonElement> | undefined; remove: MouseEventHandler<HTMLButtonElement> | undefined; }){
+export default function ExperienceForm(props: { form: any; onChange: any; save: any; remove:any }){
     const form = props.form
     const onChange = props.onChange
     return(
         <>
         <h1>Experience Information</h1>
-        <form key = {form.id} id = {form.id} onSubmit={(e) =>e.preventDefault()} data-array-name='experience'>
+        <form className="section-form text-white experience-form flex justify-around flex-col bg-steel mt-5 items-center h-[100%] rounded-xl p-2" key = {form.id} id = {form.id} onSubmit={(e) =>e.preventDefault()} data-array-name='experience'>
             <InputSection 
                 value = {form.title}
                 dataKey = "title"
@@ -48,8 +48,19 @@ export default function ExperienceForm(props: { form: any; onChange: any; save: 
             onChange={onChange}
             type="text"
             />
-            <button type="submit" onClick={props.save}>Submit</button>
-            <button onClick={props.remove}>Remove</button>
+            <div className="flex justify-around w-[80%]">
+            <button type="submit" onClick={(e) =>{
+                props.save(e)
+               document.querySelector("#Experience")?.setAttribute('style','display:block')
+             
+            
+            }}>Submit</button>
+            <button onClick={(e) =>{
+                props.remove(e)
+                document.querySelector("#Experience")?.setAttribute('style','display:block')
+             
+            }}>Remove</button>
+            </div>
         </form>
         </>
     )
