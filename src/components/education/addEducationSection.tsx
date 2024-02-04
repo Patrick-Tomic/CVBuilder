@@ -6,18 +6,34 @@ import CreateForm from "../createForm";
     
    
     return (
-        <div className="educationSection addEducationSection w-[100%] flex flex-col"  id="hidden" >
+        <div className="educationSection addEducationSection w-[100%] max-h-[80%] flex flex-col"  id="hidden" >
+            <div className=" overflow-auto mb-5">
          <DisplayForms 
         forms={props.educations}  
         FormComponent = {EducationForm}
         onChange = {props.onChange} 
-        onCancel = {props.onCancel}
-        onHide = {props.onHide}
-        onRemove = {props.onRemove}
+        remove = {props.onRemove}
         toggleCollapse = {props.toggleCollapse}
         arrayName = 'educations'
         />
-        <CreateForm onclick= {props.createForm } text="Education"/>
         </div>
+        <CreateForm onclick= {props.createForm } text="Education"/>
+        <div className="flex justify-around  ">
+        <button className="w-[6vw] h-[5vh] border-2 rounded-xl border-black hover:bg-hover font-bold" onClick={() =>{
+            document.querySelector('#education')?.setAttribute('id','hidden')
+            document.querySelector('.contact')?.setAttribute('id','personal')
+        }}>Back</button>
+        <button className="w-[6vw] h-[5vh] border-2 rounded-xl border-black hover:bg-hover font-bold" onClick={() => {
+            document.querySelector('.educationSection')?.setAttribute('id','hidden')
+            document.querySelector('.experienceSection')?.setAttribute('id' , 'experience')
+          
+                const collapsed = document.querySelectorAll('.collapsedForm')
+                collapsed.forEach((form) => {
+                    form.setAttribute('style','display:block;')
+                })
+        }}>Next</button>
+        </div>
+        </div>
+      
     )
 }  

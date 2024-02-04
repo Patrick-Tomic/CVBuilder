@@ -1,17 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
+ 
 import uniqid from "uniqid";
 import Contact from "./components/firstPhase"
+import ExperienceComponent from "./components/experience/addExperienceSection";
 import AddEducationComponent from "./components/education/addEducationSection"
 import { useState } from "react"
 import Resume from "./resume"
+import AddSkills from "./components/skills/addSkills";
+ 
 interface sections{
     educations:object[]
     experience:object[],
     skills:any[]
 }
 export default function App(){
+ 
+    
 
     const [personal, setPersonal] = useState( {
         name:'',
@@ -33,13 +38,27 @@ export default function App(){
                 id:uniqid()
                 }
          ],
-         experience:[],
-         skills:[]
+         experience:[
+            {
+                title:'',
+                company:'',
+                location:'',
+                startDate:'',
+                endDate:'',
+                collapsed:false,
+                id:uniqid()
+            }
+         ],
+         skills:[{
+            skill:'',
+            collapsed:false,
+            id:uniqid()
+         }]
     })
       
-    //for onCancel 
+  
       const [prevState, setPrevState] = useState(null)
-         
+       
       function handleSectionChange(e: { target: { dataset: { key: any; }; value: any; closest: (arg0: string) => any; }; }){
         const {key} = e.target.dataset
         
@@ -47,7 +66,7 @@ export default function App(){
         const form = e.target.closest('.section-form')
         const id = form.id
         const {arrayName} = form.dataset 
-        const array:'educations' = arrayName
+        const array:'educations'|'experience'|'skills' = arrayName
         const section = sections[array]
         const clone  = section.map((obj:any) => {
                  
@@ -67,10 +86,12 @@ export default function App(){
 
     function handleContactInfoChange(e: { target: { dataset: { key: any }; value: any } }){
         const {key} = e.target.dataset
+         
             setPersonal({...personal, [key]:e.target.value})
     }
 
-    function createForm(arrayName:'educations'|'experience'|'skills', object: { degree: string; name: string; location: string; start: string; end: string; hidden: boolean; collapsed: boolean; id: any; }){
+    function createForm(arrayName:'educations'|'experience'|'skills', object: { degree: string; name: string; location: string; start: string; end: string; hidden: boolean; collapsed: boolean; id: any; }| 
+    {title:string; company:string; location:string; startDate:string; endDate:string; collapsed:boolean; id:string }|{skill:string; collapsed:boolean; id:string}){
         setPrevState(null)
         const section:any[]= structuredClone(sections[arrayName])
         section.push(object)
@@ -92,12 +113,29 @@ export default function App(){
         }) 
     }
         //experience
-
+    const createExperienceForm = () =>{
+        createForm('experience',{
+            title:'',
+            company:'',
+            location:'',
+            startDate:'',
+            endDate:'',
+            collapsed:false,
+            id:uniqid()
+        })
+    }
+    const createSkill = () => {
+        createForm('skills',{
+            skill:'',
+            collapsed:false,
+            id:uniqid()
+        })
+    }
     //onRemove function
     function removeForm(e: { target: { closest: (arg0: string) => any; }; }) {
         const form = e.target.closest('.section-form')
         const {arrayName} = form.dataset 
-        const array:'educations' = arrayName
+        const array:'educations'|'experience'|'skills' = arrayName
         const section:any[] = sections[array]
         const {id} = form
         const collapsed = document.querySelectorAll('.collapsedForm')
@@ -109,40 +147,9 @@ export default function App(){
             ...sections, [arrayName]: section.filter((item) => item.id !== id),
            
         })
-        document.querySelector('.createFormBtn')?.setAttribute('id','btn')
-    }
-    //createForm EventListner
-    const createFormBtn = document.querySelector('.createFormBtn')
-    createFormBtn?.addEventListener('click',() =>{
-        createFormBtn.id = 'hidden'
-        document.querySelectorAll('.collapsedForm').forEach((form) => {
-            form.setAttribute('style','display:none')
-        })
-    })
-     
-   
-    //onCancel function
-    function cancelForm(e: { target: any; }){
-        if(prevState === null){
-            removeForm(e)
-            
-            return
-        }
        
-        const sectionForm = e.target.closest('section-form')
-        const {id} = sectionForm
-        const arrayName: 'educations'|'experience'|'skills' = sectionForm.dataset 
-        const section:any[] = sections[arrayName]
-
-        setSections({
-            ...sections, [arrayName]:section.map((form) => {if(form.id === id) {
-                form = prevState
-                form.collapsed = true
-            }
-            document.querySelector('.createFormBtn')?.setAttribute('id','btn')
-        return form})
-        })
     }
+     
    function toggleValue(e: { target:any},key: string | number){
     const sectionForm = e.target.closest('.section-form')
     const {id} = sectionForm
@@ -173,16 +180,18 @@ export default function App(){
     })
 }
 const educations = sections.educations
-
+const experience = sections.experience
+const skills = sections.skills
 const toggleCollapsed = (e: { target: { closest: (arg0: string) => any; }; }) =>{
      toggleValue(e, 'collapsed')
-     document.querySelector('.createFormBtn')?.setAttribute('id','btn')
+     
 }
-const toggleHidden = (e: { target: { closest: (arg0: string) => any; }; }) => toggleValue(e,'hidden')
+
  return(
     <main className="flex h-[95%] w-[95%] bg-white text-black">
-        <div className=" flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5"> 
-          <Contact onChange={handleContactInfoChange}
+        <div className=" flex justify-center items-center bg-jetBlack text-xl w-[50%] h-5/5" id='form'> 
+         
+            <Contact onChange={handleContactInfoChange}
                 name={personal.name}
                 email={personal.email}
                 number={personal.number}
@@ -192,13 +201,25 @@ const toggleHidden = (e: { target: { closest: (arg0: string) => any; }; }) => to
             educations = {sections.educations}
             onChange = {handleSectionChange}
             createForm = {createEducationForm}
-            onCancel = {cancelForm}
-            onHidden = {toggleHidden}
             toggleCollapse = {toggleCollapsed}
             onRemove = {removeForm}
-            />   
-        </div>
-        <Resume personal={personal} educations = {educations}/>
+            />    
+            <ExperienceComponent
+            experiences = {sections.experience}
+            onChange = {handleSectionChange}
+            createForm = {createExperienceForm}
+            onRemove = {removeForm}
+            toggleCollapse = {toggleCollapsed}
+            />
+            <AddSkills
+            skills = {sections.skills}
+            onChange = {handleSectionChange}
+            createForm = {createSkill}
+            onRemove = {removeForm}
+            toggleCollapse={toggleCollapsed}
+            />
+            </div>
+        <Resume personal={personal} educations = {educations} experience = {experience} skills = {skills}/>
        
     </main>
  )

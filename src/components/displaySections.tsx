@@ -3,8 +3,9 @@ import React from "react";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function DisplaySections(props:any){
     const {array, title, InfoComp} = props 
+    const id = title +'Div'
 return(
-    <div className="border-b-2 border-black">
+    <div className="border-b-2 border-black" >
     <React.Fragment>
     
        {
@@ -13,10 +14,14 @@ return(
         <h2 className="header-text text-center text-2xl font-ptSerika">{title}</h2>
        )
        }
+        <div id={id}>
         {
+           
         array.map(
-            (obj:{degree:string, name:string, location:string, start:string, end:string, hidden:boolean, collapsed:boolean, id:string}) => !obj.hidden && <InfoComp props = {obj} key ={obj.id}/>)
+            (obj:any) => !obj.hidden && <InfoComp props = {obj} key ={obj.id}/>)
+           
         }
+         </div>
         
     </React.Fragment>
     </div>

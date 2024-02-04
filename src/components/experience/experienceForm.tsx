@@ -6,7 +6,7 @@ export default function ExperienceForm(props: { form: any; onChange: any; save: 
     const onChange = props.onChange
     return(
         <>
-        <h1>Experience Information</h1>
+        <h1 className="self-center font-signika text-4xl">Experience Information</h1>
         <form className="section-form text-white experience-form flex justify-around flex-col bg-steel mt-5 items-center h-[100%] rounded-xl p-2" key = {form.id} id = {form.id} onSubmit={(e) =>e.preventDefault()} data-array-name='experience'>
             <InputSection 
                 value = {form.title}
@@ -48,14 +48,17 @@ export default function ExperienceForm(props: { form: any; onChange: any; save: 
             onChange={onChange}
             type="text"
             />
-            <div className="flex justify-around w-[80%]">
-            <button type="submit" onClick={(e) =>{
+            <div className="flex justify-around w-[80%] mt-5">
+            <button  className="border-2 border-black bg-white text-black rounded w-fit p-1 " type="submit" onClick={(e) =>{
+                if(form.endDate ==='' ||form.startDate === '' || form.title === '' ||form.location === '' || form.company===''){
+                    return
+                }
                 props.save(e)
                document.querySelector("#Experience")?.setAttribute('style','display:block')
              
             
             }}>Submit</button>
-            <button onClick={(e) =>{
+            <button  className="border-2 border-black bg-white text-black rounded w-fit p-1 " onClick={(e) =>{
                 props.remove(e)
                 document.querySelector("#Experience")?.setAttribute('style','display:block')
              

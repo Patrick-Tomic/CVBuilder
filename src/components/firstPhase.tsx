@@ -1,14 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import InputSection from "./input" 
-
- 
 //* eslint-disable @typescript-eslint/no-explicit-any */
- 
 export default function Contact({onChange,name, email,number, address,next}:any){
   // eslint-disable-next-line no-useless-escape
   const emailPattern = `/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;`
     return (
-        <div id = 'personal' className="w-[75%] h-[80%] flex flex-col  ">
+        <div id = 'personal' className="contact w-[75%] h-[80%] flex flex-col  ">
         <h1 className="self-center font-signika text-4xl">Personal Information</h1>
         <div className="bg-steel flex mt-5 text-white flex-col items-center h-[100%]  rounded-xl p-2">
             <form  onSubmit={(e) => e.preventDefault()}   className="flex h-[90%] justify-around flex-col" >
@@ -53,7 +50,7 @@ export default function Contact({onChange,name, email,number, address,next}:any)
             }     
             document.querySelector('#personal')?.setAttribute('id','hidden')
             document.querySelector('.educationSection')?.setAttribute('id','education')
-                   
+            document.querySelector('#Education')?.setAttribute('style','display:none;')       
               }}  className="border-solid border-2 hover:bg-hover text-black bg-white border-black w-2/5 self-center mt-5" value={next} data-key='next' >Next</button>
             </form>
         </div>

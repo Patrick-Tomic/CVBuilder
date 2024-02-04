@@ -11,8 +11,8 @@ export default function EducationSection({props}:any){
         dash = <p id ='clear'>-</p>}
     return(
   
-        <div className="flex flex-col border-t-2  border-black"  >
-            <div className="flex self-center text-xl font-bold">{degree}</div>
+        <div className="flex flex-col"  >
+            <div className="flex self-center text-xl font-bold border-double border-b-8 border-black">{degree}</div>
             <div className="flex justify-around p-5">
             <div className="flex flex-col"> 
             <p className="flex text-lg">{start}{dash}{end}</p>

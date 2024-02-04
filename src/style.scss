@@ -24,7 +24,11 @@ main{
 #hidden{
     display: none;
 }
- 
+ #SkillsDiv{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+     
+ }
 #headerHeading{
     font-family: 'Libre Baskerville', system-ui;
 }

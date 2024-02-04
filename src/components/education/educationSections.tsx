@@ -8,7 +8,7 @@ export default function EducationSections({educations}: any){
             <DisplaySections 
             array = {educations}
             InfoComp = {EducationSection}
-            title = {'Education'}
+            title = 'Education'
             />
         </div>
     )

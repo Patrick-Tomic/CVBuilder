@@ -7,7 +7,7 @@ export default function Main(){
          
    <Routes>
    <Route path = '/' element = {<Start />}></Route>
-   <Route path = '/contact' element= {<App />}></Route>
+   <Route path = '/app' element= {<App />}></Route>
    </Routes>
   
     )

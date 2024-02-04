@@ -10,7 +10,7 @@ export default function EducationForm(props:{onChange?:any, form?:any,cancel?:an
    <>
             <h1 className="self-center font-signika text-4xl">Education Information</h1>
           
-                <form className="section-form education-form flex  justify-around flex-col bg-steel  mt-5 text-white  items-center h-[100%]  rounded-xl p-2" key={form.id} id = {form.id}   onSubmit={(e) => e.preventDefault()}  data-array-name="educations">
+                <form className="section-form education-form flex  justify-around flex-col bg-steel  mt-5 text-white  items-center h-[100%]  rounded-xl" key={form.id} id = {form.id}   onSubmit={(e) => e.preventDefault()}  data-array-name="educations">
                 <InputSection
                     value = {form.name}
                     dataKey="name"
@@ -51,12 +51,21 @@ export default function EducationForm(props:{onChange?:any, form?:any,cancel?:an
                     type = 'string'
                     dataKey="end"
                     />
-                    <div>
+                    <div className="flex justify-around w-[60%] m-5">
              
                     <button type="submit"
-                    onClick={props.save}
-                     className="border-2 border-black bg-white text-black rounded w-fit p-1 ml-[5vw]">Submit</button>
-                     <button type="button" onClick={props.remove}>Remove</button>
+                    onClick={ (e) => {
+                      if(form.name === '' || form.degree === '' || form.location === '' || form.start === '' || form.end === ''){
+                        return
+                      }
+                      props.save(e)
+                      document.querySelector('#Education')?.setAttribute('style','display:block;')   
+                    }}
+                     className="border-2 border-black bg-white text-black rounded w-fit p-1">Submit</button>
+                     <button  className="border-2 border-black bg-white text-black rounded w-fit p-1 " type="button" onClick={(e) => {
+                      props.remove(e)
+                      document.querySelector('#Education')?.setAttribute('style','display:block;')
+                     }}>Remove</button>
                      </div>
             </form>
             </>
