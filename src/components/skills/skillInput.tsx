@@ -4,7 +4,7 @@ export default function SkillForm(props:{onChange: any, form: any, remove: any, 
     const form = props.form
     const onChange = props.onChange
     return(
-        <form className="skillForm flex  justify-around flex-col bg-steel  mt-5 text-white  items-center h-[100%]  rounded-xl"key={form.id} id = {form.id}   onSubmit={(e) => e.preventDefault()}  data-array-name="skills">
+        <form className="section-form skillForm flex  justify-around flex-col bg-steel  mt-5 text-white  items-center h-[100%]  rounded-xl"key={form.id} id = {form.id}   onSubmit={(e) => e.preventDefault()}  data-array-name="skills">
             <InputSection
             value={form.skill}
             dataKey = 'skill'
@@ -20,12 +20,12 @@ export default function SkillForm(props:{onChange: any, form: any, remove: any, 
                         return
                       }
                       props.save(e)
-                      document.querySelector('#skills')?.setAttribute('style','display:block;')   
+                      document.querySelector('#Skills')?.setAttribute('style','display:block;')   
                     }}
                      className="border-2 border-black bg-white text-black rounded w-fit p-1">Submit</button>
                      <button  className="border-2 border-black bg-white text-black rounded w-fit p-1 " type="button" onClick={(e) => {
                       props.remove(e)
-                      document.querySelector('#skills')?.setAttribute('style','display:block;')
+                      document.querySelector('#Skills')?.setAttribute('style','display:block;')
                      }}>Remove</button>
                      </div>
         </form>
