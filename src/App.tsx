@@ -57,7 +57,7 @@ export default function App(){
     })
       
   
-      const [prevState, setPrevState] = useState(null)
+      const [, setPrevState] = useState(null)
        
       function handleSectionChange(e: { target: { dataset: { key: any; }; value: any; closest: (arg0: string) => any; }; }){
         const {key} = e.target.dataset
